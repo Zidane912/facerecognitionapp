@@ -2,7 +2,7 @@ import React from 'react';
 
 class signIn extends React.Component {
     constructor(props) {
-        super(props) // to use props
+        super(props)
         this.state = {
             signInEmail: '',
             signInPassword: ''
