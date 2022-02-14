@@ -8,14 +8,9 @@ metadata.set("authorization", "Key d1f42b45d7f54f3c83fd9e5b1e26ca6d");
 const Clarifai = require('clarifai');
 console.log(Clarifai);
 
-// const app = new Clarifai.App({
-//     apiKey: 'd1f42b45d7f54f3c83fd9e5b1e26ca6d'
-//   }
-// );
 const handleApiCall = (req, res) => {
     stub.PostModelOutputs(
         {
-            // This is the model ID of a publicly available General model. You may use any other public or custom model ID.
             model_id: "d02b4508df58432fbb84e800597b8959",
             inputs: [{data: {image: {url: req.body.input}}}]
         },
@@ -49,7 +44,6 @@ app.models
         console.log(err)
         }
     )
-    // .catch(err => res.status(400).json('unable to work with api'))
 }
 
 const handleImage = (req, res, db) => {
