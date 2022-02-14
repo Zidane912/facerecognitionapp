@@ -1,4 +1,4 @@
-const handleSignIn = (db, bcrypt) => (req, res) => { // this is to signin
+const handleSignIn = (db, bcrypt) => (req, res) => {
     const { email, password } = req.body;
     if (!email || !password) {
         return res.status(400).json('incorrect form submission');
@@ -6,7 +6,7 @@ const handleSignIn = (db, bcrypt) => (req, res) => { // this is to signin
     db.select('email', 'hash').from('login')
     .where('email', '=', email)
     .then(data => {
-        const isValid = bcrypt.compareSync(password, data[0].hash); // to check if password user typed is correct
+        const isValid = bcrypt.compareSync(password, data[0].hash);
         if (isValid) {
             return db.select('*').from('users')
             .where('email', '=', email)
@@ -17,7 +17,7 @@ const handleSignIn = (db, bcrypt) => (req, res) => { // this is to signin
         } else {
         res.status(400).json('wromg credentials')
         }
-    }) // above is for password and below is for email
+    })
     .catch(err => res.status(400).json('wrong credentials'))
 }
 
